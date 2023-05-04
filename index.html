@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Flight Simulator</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="js/Base.js"></script>
+    <script src="js/Car.js"></script>
+    <script src="js/rotationD.js"></script>
+
+</head>
+
+<body>
+
+    <a-scene physics="debug:false; friction: 0.01; restitution: 0.3">
+        <a-assets>
+            <a-asset-item id="terrain-model" src="./assets/terrain/scene.gltf"></a-asset-item>
+        </a-assets>
+        <a-sky color="#87ceeb" radius="5000"></a-sky>
+        <a-entity>
+
+            <a-entity id="base" gltf-model="#terrain-model" position="0 0 0" terrain-rotation bird target>
+            </a-entity>
+
+            <a-entity id="plane_model" plane-model foo plain-rotation>
+
+                <a-entity id="camera-holder" position="-10 3 0" rotation="0 -90 0">
+                    <a-entity id="camera" camera position="0 1 0" look-controls="enabled:false"
+                        wasd-controls="enabled:false"></a-entity>
+
+                        <a-entity id="header" position="0 9 -10">
+                            <!-- Title -->
+                            <a-entity position="-10.75 0 0" rotation="0 0 0"
+                                text="font: exo2bold; align: center; width: 30; color: black; value: VIRTUAL FLIGHT"></a-entity>
+
+                            <!-- Timer -->
+                            <a-entity position="-12 -1.25 0">
+                                <a-entity position="-6.25 -0.15 0" rotation="0 0 0"
+                                    text="font: aileronsemibold; width: 10; color: black;align:right; value: TIME\nREMAINING"></a-entity>
+                                <a-entity id="timer" position="0 -0.05 0" rotation="0 0 0"
+                                    text="font: exo2bold; align: center; width: 20; color: black; value: 00:00"></a-entity>
+                            </a-entity>
+                            <a-entity position="-7 -1.25 0" rotation="0 0 0">
+                                <a-entity position="-5.25 -0.15 0" text="
+                                font:aileronsemibold; 
+                                width: 10; 
+                                align:right;
+                                color: black;
+                                 value: TARGETS\nREMAINING"></a-entity>
+                                <a-entity id="targets" position="0.5 -0.05 0" text="
+                                font: exo2bold; 
+                                align: center; 
+                                width: 20; 
+                                color: black; 
+                                value: 20"></a-entity>
+
+                            </a-entity>
+                        </a-entity>
+                        <!-- Score -->
+                        <a-entity position="13.75 9 -10" rotation="0 0 0">
+                            <a-entity position="0 0 0"
+                                text="font: exo2bold; align: center; width: 30; color: black; value: SCORE"></a-entity>
+                            <a-entity id="scoreDisplay" position="1 -1.5 0"
+                                text="font: exo2bold; align: center; width: 30; color: black; value: 0"></a-entity>
+                        </a-entity>
+                    
+                    <a-entity id="game_over_text" position="0 1.5 -10" rotation="0 0 0"
+                        text="font: exo2bold; align: center; width: 100; color: black; value: GAME OVER!!!"
+                        visible="false"></a-entity>
+                        </a-entity>
+            </a-entity>
+        </a-entity>
+        </a-entity>
+
+    </a-scene>
+</body>
+
+</html>
